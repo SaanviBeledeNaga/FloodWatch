@@ -1,0 +1,293 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@theme {
+  --color-brand-red: #ef4444;
+  --color-brand-orange: #f97316;
+  --color-brand-yellow: #eab308;
+  --color-brand-green: #22c55e;
+  --color-brand-amber: #f59e0b;
+  --color-brand-gold: #d4a843;
+  --color-brand-cyan: #06b6d4;
+  --color-map-bg: #050a14;
+  --color-space-deep: #030712;
+  --color-space-dark: #0a0f1e;
+  --color-space-mid: #111827;
+  --color-space-light: #1e293b;
+}
+
+/* Base */
+body {
+  @apply bg-space-deep text-slate-100 overflow-hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+code,
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Glass panels */
+.glass-panel {
+  background: rgba(10, 15, 30, 0.70);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(100, 116, 139, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  border-radius: 0.75rem;
+}
+
+.glass-panel-light {
+  background: rgba(15, 23, 42, 0.50);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(100, 116, 139, 0.12);
+  border-radius: 0.75rem;
+}
+
+/* Text effects */
+.text-glow {
+  text-shadow: 0 0 20px rgba(212, 168, 67, 0.4), 0 0 60px rgba(212, 168, 67, 0.1);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f59e0b, #d4a843, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cool {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* MapLibre overrides */
+.maplibregl-popup-content {
+  @apply !border !text-white;
+  background: rgba(10, 15, 30, 0.90) !important;
+  border-color: rgba(100, 116, 139, 0.3) !important;
+  backdrop-filter: blur(12px);
+}
+
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: rgba(10, 15, 30, 0.90) !important;
+}
+
+.maplibregl-map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
+
+/* Simulation page accent */
+.sim-panel {
+  border-color: rgba(239, 68, 68, 0.15);
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px currentColor, 0 0 10px transparent;
+  }
+
+  50% {
+    box-shadow: 0 0 10px currentColor, 0 0 25px currentColor;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(120px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(120px) rotate(-360deg);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fade-in-up 0.6s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fade-in-up 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation: fade-in-up 0.6s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+/* Star particles */
+.star-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--duration) ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: var(--max-opacity, 0.7);
+    transform: scale(1.2);
+  }
+}
+
+/* Route animation */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* Heatmap legend gradient */
+.heatmap-gradient {
+  background: linear-gradient(to right, #22c55e, #eab308, #f97316, #ef4444);
+}
+
+/* Premium button hover */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-premium:hover::before {
+  left: 100%;
+}
+
+/* Hospital marker */
+.hospital-marker {
+  font-size: 20px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.5));
+  transition: transform 0.2s ease;
+}
+
+.hospital-marker:hover {
+  transform: scale(1.3);
+}
